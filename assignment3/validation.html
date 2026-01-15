@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            width: 320px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            font-size: 15px;
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+            display: none;
+        }
+
+        .success {
+            color: green;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2 style="text-align:center;">Login Form</h2>
+
+    <label>Username</label>
+    <input type="text" id="username">
+    <div id="userError" class="error">Username must be at least 5 characters</div>
+
+    <br>
+
+    <label>Password</label>
+    <input type="password" id="password">
+    <div id="passError" class="error">Password must be at least 6 characters</div>
+
+    <button onclick="validateForm()">Login</button>
+
+    <div id="successMsg" class="success">Validation Successful ✔</div>
+</div>
+
+<script>
+    function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        var valid = true;
+
+        if (username.length < 5) {
+            document.getElementById("userError").style.display = "block";
+            valid = false;
+        } else {
+            document.getElementById("userError").style.display = "none";
+        }
+
+        if (password.length < 6) {
+            document.getElementById("passError").style.display = "block";
+            valid = false;
+        } else {
+            document.getElementById("passError").style.display = "none";
+        }
+
+        if (valid) {
+            document.getElementById("successMsg").style.display = "block";
+        } else {
+            document.getElementById("successMsg").style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
